@@ -29,8 +29,11 @@ const server = http
         res.end('Internal Server Error');
       }
 
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(data);
+      if (file === '404.html') {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end(data);
+      }
+
     });
   })
   .listen(PORT, () => {
