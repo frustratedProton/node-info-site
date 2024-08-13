@@ -22,11 +22,9 @@ app.get('/contact', (req, res) => {
 	res.sendFile(path.join(__dirname, 'contact-me.html'));
 });
 
-app.use((req, res) => {
+app.all('*', (req, res) => {
 	res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-	console.log(`Express app - listening on port ${PORT}`)
-);
+app.listen(PORT, () => console.log(`Express app - listening on port ${PORT}`));
